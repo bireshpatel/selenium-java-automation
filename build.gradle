@@ -1,0 +1,66 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'groovy'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+group = 'com.application.test'
+version = '1.0.6-SNAPSHOT'
+
+description = "Application Automation"
+
+ext {
+    serenity_core = "1.1.31"
+    core_version = "1.0.47"
+    serenity_jbehave = "1.6.0"
+    serenity_junit="1.1.26"
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {url "http://repo.maven.apache.org/maven2"}
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.26")
+    }
+}
+
+dependencies {
+    testCompile group: 'net.serenity-bdd', name: 'serenity-core', version:serenity_core
+    testCompile group: 'net.serenity-bdd', name: 'serenity-spring', version:serenity_core
+    testCompile group: 'net.serenity-bdd', name: 'core', version:core_version
+    testCompile group: 'net.serenity-bdd', name: 'serenity-jbehave', version:serenity_jbehave
+    testCompile group:'net.serenity-bdd',name:'serenity-junit',version:serenity_junit
+
+    testCompile('org.assertj:assertj-core:1.7.0')
+
+    testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.3.1'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-server', version:'2.45.0'
+    testCompile group: 'joda-time', name: 'joda-time', version:'2.1'
+    testCompile(group: 'org.seleniumhq.selenium.fluent', name: 'fluent-selenium', version:'1.14.5') {
+        exclude(module: 'selenium-java')
+    }
+    testCompile(group: 'com.github.tanob', name: 'groobe', version:'1.1') {
+        exclude(module: 'hamcrest-all')
+    }
+    testCompile group: 'org.codehaus.geb', name: 'geb-core', version:'0.6.1'
+    testCompile group: 'com.google.guava', name: 'guava', version:'17.0'
+
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test{
+    systemProperty 'webdriver.ie.driver', System.getProperty('webdriver.ie.driver', 'src\\drivers\\IEDriverServer.exe')
+    systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver', 'src\\Drivers\\chromedriver.exe')
+    systemProperty 'test.env', System.getProperty('test.env')
+    systemProperty "metafilter", System.getProperty("metafilter")
+}
