@@ -11,5 +11,9 @@ Serenity    : 1.0.47
 OS          : Windows 7 6.1 x86(32-bit)
 
 ## Running:
-Type the followin to run the project
+Type the following to run the project through Command Line
 `gradle clean test aggregate -Dmetafilter=+<metafilter> -Dtest.env=<environment> -i`
+
+Type the following to run the project through IntelliJ Run Configuration
+Tasks: clean test aggregate
+VM Options: -Dmetafilter=+<metafilter> -Dtest.env=<environment>
