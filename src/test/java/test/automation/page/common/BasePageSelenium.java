@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -40,24 +39,25 @@ public class BasePageSelenium extends PageObject {
         return element;
     }
 
-    public void waitForLoading(){
-        int tme=0;
+    public void waitForLoading() {
+        int tme = 0;
         try {
             WebElement ele1 = getDriver().findElement(PageLoad);
             if (ele1 != null) {
-                tme=0;
+                tme = 0;
                 while (ele1.isDisplayed()) {
                     //Wait.waitFor(2);
-                    tme+=2;
+                    tme += 2;
                 }
             }
-        }catch (org.openqa.selenium.NoSuchElementException e){}
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+        }
     }
 
     public void buttonClick(By locator) {
-        try{
+        try {
             webDriverWait.until(ExpectedConditions.elementToBeClickable(locator));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         waitForElement(locator).click();
@@ -176,12 +176,12 @@ public class BasePageSelenium extends PageObject {
         webElementEnter.clear();
     }
 
-    public List getColumnValueList(By locator, int columnNumber){
+    public List getColumnValueList(By locator, int columnNumber) {
         List columnValuesList = new ArrayList();
         WebElement table = waitForElement(locator);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
-            WebElement cell = row.findElement(By.xpath("td["+columnNumber+"]"));
+            WebElement cell = row.findElement(By.xpath("td[" + columnNumber + "]"));
             columnValuesList.add(cell.getText().trim());
         }
         return columnValuesList;
@@ -198,7 +198,7 @@ public class BasePageSelenium extends PageObject {
         Set<String> handles = getDriver().getWindowHandles();
         for (String handle : handles) {
             getDriver().switchTo().window(handle);
-            if (getDriver().getTitle().equals(title)){
+            if (getDriver().getTitle().equals(title)) {
                 return true;
             }
         }
@@ -222,7 +222,7 @@ public class BasePageSelenium extends PageObject {
         return nameParent;
     }
 
-    public void refreshWebPage(){
+    public void refreshWebPage() {
         getDriver().navigate().refresh();
     }
 
@@ -252,5 +252,4 @@ public class BasePageSelenium extends PageObject {
         WebElement webElementAtt = waitForElement(locator);
         return webElementAtt.getAttribute(webElementAttribute);
     }
-
 }

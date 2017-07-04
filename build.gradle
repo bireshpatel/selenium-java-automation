@@ -63,4 +63,6 @@ test{
     systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver', 'src\\Drivers\\chromedriver.exe')
     systemProperty 'test.env', System.getProperty('test.env')
     systemProperty "metafilter", System.getProperty("metafilter")
+    systemProperty "storyfilter", System.getProperty("storyfilter")
+
 }

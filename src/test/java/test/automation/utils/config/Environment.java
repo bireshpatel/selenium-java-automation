@@ -9,26 +9,25 @@ import java.util.Set;
 @XmlRootElement
 public class Environment {
 
-	private Set<Parameter> param = new HashSet<Parameter>();
+    private Set<Parameter> param = new HashSet<Parameter>();
 
-	private String name;
+    private String name;
 
-	@XmlElement(name = "Parameter", type = Parameter.class)
-	public Set<Parameter> getParam() {
-		return param;
-	}
+    @XmlElement(name = "Parameter", type = Parameter.class)
+    public Set<Parameter> getParam() {
+        return param;
+    }
 
-	public void setParam(Set<Parameter> param) {
-		this.param = param;
-	}
+    public void setParam(Set<Parameter> param) {
+        this.param = param;
+    }
 
-	@XmlAttribute(name = "name")
-	public String getName() {
-		return name;
-	}
+    @XmlAttribute(name = "name")
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

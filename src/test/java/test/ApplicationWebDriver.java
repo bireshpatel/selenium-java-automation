@@ -1,7 +1,6 @@
 package test;
 
 import net.thucydides.core.webdriver.DriverSource;
-import org.jbehave.core.annotations.BeforeStories;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;

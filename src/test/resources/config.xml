@@ -5,7 +5,7 @@
     <Environment name="QA">
 
         <!--Url-->
-        <Parameter key="mxiUrl" value="https://www.kayak.com/flights"/>
+        <Parameter key="testUrl" value="https://www.kayak.com/flights"/>
 
     </Environment>
 

@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = { "key", "value" })
+@XmlType(propOrder = {"key", "value"})
 public class Parameter {
 
     private String key;
@@ -32,5 +32,4 @@ public class Parameter {
     public void setValue(String value) {
         this.value = value;
     }
-
 }
